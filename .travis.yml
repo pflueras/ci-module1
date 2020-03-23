@@ -1,0 +1,4 @@
+language: java
+dist: trusty
+script:
+  - mvn clean install
