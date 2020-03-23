@@ -1,4 +1,13 @@
 language: java
 dist: trusty
 script:
-  - mvn clean install
+- mvn clean install
+deploy:
+  provider: bintray
+  file: bintray.json
+  skip_cleanup: true
+  user: pflueras
+  on:
+    branch: master
+  key:
+    secure: IQwe2ba4S0UcJ0uyY2wth5UfsqPK3r8QBJaAeMghUfCiwTZLIi5e2FRcHsrMFl75n+zjU3tsFFiD4SaUaMnPW6iAltwGu14hg9DKyYCS7xKmmrEiVXgvYUwlvtqiemrRTl9hTCdOc6DATZ3Jhr6YdcL15m7NHZrwy5CksfCvTyz2RfVhwDBVWVIKkYF/v85tKkdGrtZd6ap8QGTcobDg+tHq/P/7FQdxz2cQtZ2zOvmp7TqhtXQs1gLkhp06vyrpWcuO56erkP7SMoDxb11hP/deeCc2+9iN1X7tOYDmNWokEqDXybeNB4g13Aa9ySsNTXj//H9/XOmob3gAJ0wKIIJ7O2sdreQPpj/3XSoVBqkHbCwNxVPP+Hhe6w54T4y+DPWmLwyDx+368UzwWSqaglnVdwkhP/qfazJ5zOT73i2KiYsz5TED1USHOPYcqpAhcwO/gNmPfiJOWruhUU/8PDlezeOsrKd7gcZSPbSiB8PShkDNZTlFY3bwk9eMTzdbWZKBFUQecj3RH2dW9zFrXrjxGoA18J4i+04j6M5Sj4KzGJv7OCbPpl6Y1lrTo6UFzX+3/AschHPun/nkUkTAJSDcB6ArcJEz3JLDKM+7MzdrIEGzFP2ntowYmNKrDgbkiNUdpWS2L5+mm/0qUSHjWcnlVgMXDg/adsLUTCS0Idc=
