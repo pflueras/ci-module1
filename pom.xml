@@ -58,8 +58,23 @@
             <id>bintray-pflueras-platform</id>
             <name>bintray-pflueras-platform</name>
             <url>https://dl.bintray.com/pflueras/pflueras-platform</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>oss-jfrog-snapshots</id>
+            <name>oss-jfrog-snapshots</name>
+            <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
