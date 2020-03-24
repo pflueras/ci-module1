@@ -3,7 +3,13 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
     <servers>
         <server>
-            <id>pflueras-bintray-repo</id>
+            <id>oss-jfrog-snapshots</id>
+            <username>${env.BINTRAY_USERNAME}</username>
+            <password>${env.BINTRAY_PASSWORD}</password>
+        </server>
+
+        <server>
+            <id>bintray-pflueras-platform</id>
             <username>${env.BINTRAY_USERNAME}</username>
             <password>${env.BINTRAY_PASSWORD}</password>
         </server>

@@ -3,7 +3,7 @@
 
     <groupId>org.examples</groupId>
     <artifactId>ci-module1</artifactId>
-    <version>0.9.2</version>
+    <version>0.9.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>CI Module1</name>
 
@@ -55,8 +55,8 @@
 
     <repositories>
         <repository>
-            <id>pflueras-bintray-repo</id>
-            <name>pflueras-bintray-repo</name>
+            <id>bintray-pflueras-platform</id>
+            <name>bintray-pflueras-platform</name>
             <url>https://dl.bintray.com/pflueras/pflueras-platform</url>
             <snapshots>
                 <enabled>false</enabled>
@@ -66,9 +66,14 @@
 
     <distributionManagement>
         <repository>
-            <id>pflueras-bintray-repo</id>
-            <name>pflueras-bintray-repo</name>
+            <id>bintray-pflueras-platform</id>
+            <name>bintray-pflueras-platform</name>
             <url>https://api.bintray.com/maven/pflueras/pflueras-platform/ci-module1/;publish=1</url>
         </repository>
+        <snapshotRepository>
+            <id>oss-jfrog-snapshots</id>
+            <name>oss-jfrog-snapshots</name>
+            <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
