@@ -11,4 +11,15 @@ public class Calculator {
     public int add(int a, int b) {
         return a + b;
     }
+
+    /**
+     * Simple multiply operation.
+     *
+     * @param a First operand
+     * @param b Second operand
+     * @return Multiplication of two operands
+     */
+    public int multuply(int a, int b) {
+        return a * b;
+    }
 }
