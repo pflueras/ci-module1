@@ -19,7 +19,7 @@ public class Calculator {
      * @param b Second operand
      * @return Multiplication of two operands
      */
-    public int multuply(int a, int b) {
+    public int multiply(int a, int b) {
         return a * b;
     }
 }
