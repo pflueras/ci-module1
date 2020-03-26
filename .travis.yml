@@ -10,7 +10,7 @@ script:
 
 deploy:
   provider: script
-  script: "mvn deploy:deploy"
+  script: "mvn deploy -DskipTests"
   on:
     branch: master
 
