@@ -21,4 +21,4 @@ deploy:
     branch: master
 
 after_deploy:
-  - [[ "$TRAVIS_BRANCH" == "master" ]] && .travis/travis_downstream_deploy.sh
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then .travis/travis_downstream_deploy.sh; fi
