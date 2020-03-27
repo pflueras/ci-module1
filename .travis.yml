@@ -18,8 +18,13 @@ deploy:
   provider: script
   script: "mvn deploy -DskipTests"
   on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH = master
+    branch: master
+
+deploy:
+  provider: script
+  script: "mvn deploy -DskipTests"
+  on:
+    tags: true
 
 after_deploy:
   - chmod u+x .travis/travis_downstream_deploy.sh
