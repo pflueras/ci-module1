@@ -19,7 +19,7 @@ mvn versions:use-dep-version -Dincludes=org.examples -DdepVersion=$TRAVIS_TAG -D
 git add pom.xml
 git commit -m "Version update: $TRAVIS_TAG"
 git tag "$TRAVIS_TAG"
-git push --tags
+git push --follow-tags
 
 # Clean up
 cd $TRAVIS_BUILD_DIR
