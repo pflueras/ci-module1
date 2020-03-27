@@ -22,4 +22,4 @@ deploy:
 
 after_deploy:
   - chmod u+x .travis/travis_downstream_deploy.sh
-  - if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ "$TRAVIS_BRANCH" == "master" ]]; then .travis/travis_downstream_deploy.sh; fi
+  - if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ && "$TRAVIS_BRANCH" == "master" ]]; then .travis/travis_downstream_deploy.sh; fi
