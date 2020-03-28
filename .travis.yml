@@ -27,5 +27,5 @@ deploy:
     tags: true
 
 after_deploy:
-  - chmod u+x .travis/travis_downstream_deploy.sh
-  - if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then .travis/travis_downstream_deploy.sh; fi
+  - chmod u+x .travis/release_deps.sh
+  - if [[ "$TRAVIS_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then .travis/release_deps.sh; fi
