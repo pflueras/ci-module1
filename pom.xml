@@ -3,7 +3,7 @@
 
     <groupId>org.examples</groupId>
     <artifactId>ci-module1</artifactId>
-    <version>0.9.14-SNAPSHOT</version>
+    <version>0.9.14</version>
     <packaging>jar</packaging>
     <name>CI Module1</name>
     <description>Module1 of multi-module project</description>
