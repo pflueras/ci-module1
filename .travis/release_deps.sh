@@ -21,7 +21,7 @@ git tag "$TRAVIS_TAG" -m "Release version $TRAVIS_TAG"
 MAJOR=$(echo $TRAVIS_TAG | cut -f 1 -d '.')
 MINOR=$(echo $TRAVIS_TAG | cut -f 2 -d '.')
 PATCH=$(echo $TRAVIS_TAG | cut -f 3 -d '.')
-NEW_VERSION=$MAJOR.$MINOR.$(($patch + 1))-SNAPSHOT
+NEW_VERSION=$MAJOR.$MINOR.$(($PATCH + 1))-SNAPSHOT
 echo 'New version:' $NEW_VERSION
 
 # Prepare for next development version
