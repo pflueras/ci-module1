@@ -59,9 +59,6 @@
             <id>bintray-pflueras-platform</id>
             <name>bintray-pflueras-platform</name>
             <url>https://dl.bintray.com/pflueras/pflueras-platform</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -74,9 +71,6 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
 

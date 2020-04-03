@@ -1,37 +1,44 @@
 #!/bin/sh
 
-echo 'Tag:' $TRAVIS_TAG
+release_dependency()
+{
+    echo "Releasing dependency version $2 of $1. Next development version $3"
+
+    cd $TRAVIS_BUILD_DIR/..
+    git clone --depth=50 --branch=master https://${GITHUB_TOKEN}@github.com/pflueras/$1.git
+    cd $1
+
+    # Update project version and all org.examples dependencies
+    mvn versions:set -DnewVersion=$VERSION
+    mvn versions:use-dep-version -Dincludes=org.examples -DdepVersion=$VERSION -DforceVersion=true
+
+    git add pom.xml
+    git commit -m "Release of version $2"
+    git tag "$2" -m "Release version $2"
+
+    # Prepare for next development version
+    mvn versions:set -DnewVersion=$3
+    mvn versions:use-dep-version -Dincludes=org.examples -DdepVersion=$3 -DforceVersion=true
+    git add pom.xml
+    git commit -m "Next development version $3"
+
+    git push --follow-tags
+}
+
+VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+echo "Releasing verion: $VERSION"
 
 git config --global user.email "petru.flueras@gmail.com"
 git config --global user.name "Petru Flueras"
 
-cd $TRAVIS_BUILD_DIR/..
-git clone --depth=50 --branch=master https://${GITHUB_TOKEN}@github.com/pflueras/ci-module2.git
-cd ci-module2
-
-# Update project version and org.examples dependencies
-mvn versions:set -DnewVersion=$TRAVIS_TAG
-mvn versions:use-dep-version -Dincludes=org.examples -DdepVersion=$TRAVIS_TAG -DforceVersion=true
-
-git add pom.xml
-git commit -m "Release version $TRAVIS_TAG"
-git tag "$TRAVIS_TAG" -m "Release version $TRAVIS_TAG"
-
 # New version
-MAJOR=$(echo $TRAVIS_TAG | cut -f 1 -d '.')
-MINOR=$(echo $TRAVIS_TAG | cut -f 2 -d '.')
-PATCH=$(echo $TRAVIS_TAG | cut -f 3 -d '.')
+MAJOR=$(echo $VERSION | cut -f 1 -d '.')
+MINOR=$(echo $VERSION | cut -f 2 -d '.')
+PATCH=$(echo $VERSION | cut -f 3 -d '.')
 NEW_VERSION=$MAJOR.$MINOR.$(($PATCH + 1))-SNAPSHOT
-echo 'New version:' $NEW_VERSION
+echo "Releasing version: $VERSION. Next development version: $NEW_VERSION"
 
-# Prepare for next development version
-mvn versions:set -DnewVersion=$NEW_VERSION
-mvn versions:use-dep-version -Dincludes=org.examples -DdepVersion=$NEW_VERSION -DforceVersion=true
-git add pom.xml
-git commit -m "Next development version $NEW_VERSION"
-
-git push --follow-tags
-
-# Clean up
-cd $TRAVIS_BUILD_DIR
-rm -rf ci-module2
+for dependency in 'ci-module2';
+do
+    release_dependency $dependency $VERSION $NEW_VERSION
+done
