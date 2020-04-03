@@ -76,12 +76,12 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-pflueras-platform</id>
+            <id>bintray-deploy</id>
             <name>bintray-pflueras-platform</name>
             <url>https://api.bintray.com/maven/pflueras/pflueras-platform/ci-module1/;publish=1</url>
         </repository>
         <snapshotRepository>
-            <id>oss-jfrog-snapshots</id>
+            <id>oss-jfrog-snapshot-deploy</id>
             <name>oss-jfrog-snapshots</name>
             <url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
         </snapshotRepository>

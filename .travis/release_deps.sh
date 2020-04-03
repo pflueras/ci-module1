@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Params:
+#   - downstream module name
+#   - Release version
+#   - Next development version
 release_dependency()
 {
     echo "Releasing dependency version $2 of $1. Next development version $3"
@@ -36,7 +40,6 @@ MAJOR=$(echo $VERSION | cut -f 1 -d '.')
 MINOR=$(echo $VERSION | cut -f 2 -d '.')
 PATCH=$(echo $VERSION | cut -f 3 -d '.')
 NEW_VERSION=$MAJOR.$MINOR.$(($PATCH + 1))-SNAPSHOT
-echo "Releasing version: $VERSION. Next development version: $NEW_VERSION"
 
 for dependency in 'ci-module2';
 do
