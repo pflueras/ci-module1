@@ -15,16 +15,14 @@ cache:
     - "$HOME/.m2/repository"
 
 deploy:
-  provider: script
-  script: "mvn deploy -DskipTests"
-  on:
-    branch: master
-
-deploy:
-  provider: script
-  script: "mvn deploy -DskipTests"
-  on:
-    tags: true
+  - provider: script
+    script: "mvn deploy -DskipTests"
+    on:
+      branch: master
+  - provider: script
+    script: "mvn deploy -DskipTests"
+    on:
+      tags: true
 
 after_deploy:
   - chmod u+x .travis/release_deps.sh
